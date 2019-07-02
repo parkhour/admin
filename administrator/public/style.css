@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Pathway+Gothic+One&display=swap');
 body {
     background-color: rgb(255,207,0);
     height:100vh;
+    font-family: 'Pathway Gothic One', sans-serif;
 }

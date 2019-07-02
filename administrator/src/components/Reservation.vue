@@ -9,7 +9,7 @@
            <div>
                <div class="d-flex justify-content-center">
                   <input type="text" v-model="searchValue" class="form-control col-5 mr-2">
-                  <Button  @click.prevent="search" class="btn btn-success">
+                  <Button  @click.prevent="search" class="btn btn-success  rounded-0">
                     Search
                   </Button>
               </div> 

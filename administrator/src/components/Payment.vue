@@ -1,52 +1,51 @@
 <template>
     <div>
-    <h2>PAYMENT</h2>    
+       
     <div class="col-12 my-4 d-flex justify-content-between">
-      <div class="col-4 row">
-        <div class="border-right col-12 px-5">
-           <div class="input-group">
-             <div class="input-group-prepend">
-               <span class="input-group-text" >License Plate</span>
-             </div>
-               <input type="text" v-model="licensePlate" class="form-control ">
+      <div class="col-5 row">
+        <div class="border-right col-12 px-2">
+           <div class="input-group mt-4">
+               <input type="text" v-model="licensePlate"  placeholder="Enter Here" class="form-control col-11 rounded-0 inputannya">
             </div>
-              <Button  @click.prevent="findPayment" class="btn btn-info float-right my-2 btnnya">
-                   searching
+              <Button  @click.prevent="findPayment" class="btn btn-warning float-left my-2 text-white rounded-0">
+                   Search
+              </Button>
+               <Button  @click.prevent="clear" class="btn btn-info float-left my-2 ml-4 text-white rounded-0">
+                   Clear
               </Button>
            </div>
       </div>
        <div class="col-7">
          <div v-if="this.payments==''">
-           data tidak ada
+             <img src="../assets/none.png" alt="" height="300px">
          </div>
           <div v-else >
-           <table class="table">
-               <tbody>
-                <tr class="listpayments">
-                  <td scope="row"> License Plate</td>
-                  <td >{{payments.licensePlate}}</td>              
-                </tr>  
-                <tr class="listpayments">
-                  <td scope="row"> status</td>
-                  <td >{{payments.status}}</td>              
-                </tr>  
-               <tr class="listpayments">
-                  <td scope="row"> parking start</td>
-                  <td >{{payments.parkingStart}}</td>              
-                </tr>  
-              <tr class="listpayments">
-                  <td scope="row"> parking end </td>
-                  <td >{{payments.parkingEnd}}</td>              
-                </tr>    
-                 <tr class="listpayments">
-                  <td scope="row"> total charge </td>
-                  <td >{{payments.totalCharge}}</td>              
-                </tr>                              
-              </tbody>
-            </table>
-             <div>
-          <Button class="btn btn-success float-right btnnya" @click.prevent="confirm(payments._id)"  >
-          Lunas
+            <div class="d-flex flex-column">
+              <div class="d-flex justify-content-between bawah pb-1 pt-3">
+                 <div>Licence Plate</div>
+                 <div> {{payments.licensePlate}}</div>
+              </div>
+              <div class="d-flex justify-content-between bawah pb-1 pt-3">
+                 <div>Status</div>
+                 <div> {{payments.status}}</div>
+              </div>
+              <div class="d-flex justify-content-between bawah pb-1 pt-3">
+                 <div>Parking Start</div>
+                 <div>{{payments.parkingStart}}</div>
+              </div>
+               <div class="d-flex justify-content-between bawah pb-1 pt-3">
+                 <div>Parking End</div>
+                 <div> {{payments.parkingEnd}}</div>
+              </div>
+               <div class="d-flex justify-content-between bawahh pb-1 pt-3 ">
+                 <div>Total</div>
+                 <div> {{payments.totalCharge}}</div>
+              </div>
+              
+            </div>  
+             <div class="mt-3">
+          <Button class="btn btn-success float-right btnnya rounded-0" @click.prevent="confirm(payments._id)"  >
+          Confirm
           </Button>
          </div>        
          </div>
@@ -76,30 +75,31 @@ created(){
 },
 methods: {
   findPayment(){    
-   axios
-   .post("/payments",{
-     "licensePlate":this.licensePlate
-   },{
-     headers: {
-       authorization:localStorage.access_token
+  //  axios
+  //  .post("/payments",{
+  //    "licensePlate":this.licensePlate
+  //  },{
+  //    headers: {
+  //      authorization:localStorage.access_token
       
-     }
-   })
-    .then(({data})=>{
-      // this.payments=isi
-      // alert(this.payments)
-      this.payments = data.reverse()
+  //    }
+  //  })
+  //   .then(({data})=>{
+  //     // this.payments=isi
+  //     // alert(this.payments)
+  //     this.payments = data.reverse()
 
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
-    .finally(()=>{
-      this.licensePlate = ''
-    })
-
+  //   })
+  //   .catch((err)=>{
+  //     console.log(err)
+  //   })
+  //   .finally(()=>{
+  //     this.licensePlate = ''
+  //   })
+  console.log(this.licensePlate)
   },
   confirm(value){
+    // console.log(value);
      axios
       .patch("/payments/"+value,{
           status:"completed"
@@ -121,6 +121,16 @@ methods: {
         
         }
 },
+// computed: {
+//   capitalizedLicensePlate: () => {
+//     return this.licensePlate.toUpperCase();
+//   }
+// },
+watch: {
+  licensePlate: function(val) {
+    this.licensePlate = val.toUpperCase();
+  }
+}
 
     
 }
@@ -128,7 +138,21 @@ methods: {
 <style scoped>
 .listpayments{
   border-bottom: 1px solid;
-
+}
+.inputannya{
+  height:13vh;
+  font-size:6vh
+}
+.bawah{
+  font-size:3vh;
+  border: 0;
+  border-bottom: 1px solid #dadada; 
+  outline: 0;
+}
+.bawahh{
+  border: 0;
+  border-bottom: 1px solid; 
+  outline: 0;
 }
   
 </style>

@@ -37,7 +37,5 @@ export default {
   color: #42b983;
 }
 
-.btnnya {
-  border-radius:none;
-}
+
 </style>

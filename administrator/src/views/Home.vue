@@ -1,7 +1,7 @@
 <template>
   <div class="home">    
     <Navbar/>
-   <b-card class="text-center px-4 row bg-white col-10 mx-auto my-4"> 
+   <b-card class="text-center px-4 row bg-white col-10 mx-auto mt-4 rounded-0"> 
      <router-view></router-view> 
    </b-card>
 
@@ -35,5 +35,6 @@ export default {
   
 
 }
+
 
 </style>

@@ -5,7 +5,7 @@
             <div class="form-content">
                 <div class="form-items">
                     <div class="logo mx-auto" >
-                        <a href="">
+                        <a  href="">
                             <img src="../assets/final_logo_ph.png" alt="" width="130px">
                         </a>
                     </div>
