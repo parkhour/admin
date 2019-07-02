@@ -1,15 +1,10 @@
 <template>
-  <div class="home bg-light">    
+  <div class="home">    
     <Navbar/>
    <b-card class="text-center px-4 row bg-white col-10 mx-auto my-4"> 
      <router-view></router-view> 
    </b-card>
-   <br/>
-   <br/>
-   <br/>
-   <br/>
-   <br/>
-   <br/>
+
   </div>
 </template>
 
@@ -33,3 +28,12 @@ export default {
   }
 }
 </script>
+<style scoped>
+.home{
+  background-color: #F8F9FA;
+  height:100vh;
+  
+
+}
+
+</style>

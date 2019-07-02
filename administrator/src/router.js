@@ -5,6 +5,7 @@ import Login from "./views/Login.vue"
 import Payment from "@/components/Payment.vue"
 import History from "@/components/History.vue"
 import Reservation from "@/components/Reservation.vue"
+// import Payment2 from "@/components/payment2.vue"
 
 
 Vue.use(Router);
@@ -29,7 +30,11 @@ export default new Router({
         {
           path: '/reservation',
           component: Reservation
-        }
+        },
+        // {
+        //   path:'/payment2',
+        //   component: Payment2
+        // }
        
       ],
     },

@@ -1,19 +1,30 @@
 <template>
    <div>
-      <h2>History Payments</h2>    
+       </br>
+      <h2>History Payments</h2>   
+      <template v-if="loading==false">
+       </br>
+        </br> 
       <div class="d-flex flex-column">
            <div>
-               <div class="d-flex flex-row float-right">
-                  <input type="text" v-model="searchValue" class="form-control col-8">
-                  <Button  @click.prevent="search" class="btn btn-info">
-                      searching
+               <div class="d-flex justify-content-center">
+                  <input type="text" v-model="searchValue" class="form-control col-5 mr-2">
+                  <Button  @click.prevent="search" class="btn btn-success">
+                    Search
                   </Button>
               </div> 
            </div>  
-           <div>
+           </br>
+           <div class="mx-4">
              <Table :datanya="paymentsHistory" :fieldnya="field"/> 
            </div>
       </div>        
+      </template>
+      <template v-else>
+        <div>
+          <b-spinner class="m-5" label="Busy"></b-spinner>
+        </div>
+      </template>
     </div>
 </template>
 
@@ -31,7 +42,8 @@ data(){
     paymentsHistory:[],
     field:['no','licensePlate','parkingStart', 'parkingEnd', 'totalCharge','status'],
     searchValue:'',
-    paymentsHistorySearch:''
+    paymentsHistorySearch:'',
+    loading:true
 
   }
 },
@@ -50,9 +62,16 @@ methods: {
           console.log(data)
           this.paymentsHistory=data  
           this.paymentsHistorySearch=data
+           data.map((datum)=>{
+              datum.parkingStart = moment(datum.parkingStart).format('llll')
+                datum.parkingEnd = moment(datum.parkingEnd).format('llll')
+          })
         })
         .catch((err)=>{
           console.log(err)
+        })
+        .finally(()=>{
+          this.loading=false
         })
   },
   search(){

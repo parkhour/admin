@@ -16,7 +16,7 @@
       <b-navbar-nav class="ml-auto">
         <b-nav-item-dropdown right>
           <!-- Using 'button-content' slot -->
-          <template slot="button-content"><em>User</em></template>
+          <template slot="button-content"><em>hello,Admin</em></template>
           <b-dropdown-item @click="logout">Sign Out</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
@@ -30,7 +30,7 @@ export default {
   methods:{
     logout(){
       localStorage.clear()
-      this.router.push('/login')
+      this.$router.push('/login')
     }
   }
 }

@@ -1,5 +1,6 @@
 <template>
-    <div class="form-body">
+   <div class="login">
+      <div class="form-body">
         <div class="form-holder">
             <div class="form-content">
                 <div class="form-items">
@@ -26,6 +27,7 @@
 
         </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -37,7 +39,7 @@ export default {
   },
   created(){
      if (localStorage.access_token) {
-      this.$router.push("/payments");
+      this.$router.push("/payment");
     }
 
   },
@@ -55,7 +57,7 @@ export default {
       })
         .then(({ data }) => {
           localStorage.setItem("access_token", data);
-          this.router.push('/payments')
+          this.$router.push('/payment')
           console.log(data)
         })
         .catch(err => {
@@ -71,10 +73,13 @@ export default {
 </script>
 
 <style scoped>
+.login{
+     height:100vh;
+}
 .form-body, .form-holder{
-    height: 100%;
+    height:100vh;
     padding-top:3%;
-    margin-bottom:150px;    
+     
 }
 
 .form-holder{
@@ -90,6 +95,7 @@ export default {
     min-height: 100%;
     background:rgb(255,207,0);
     background-size: cover;
+    height:100%;
 }
 
 .form-items {

@@ -1,14 +1,14 @@
 <template>
     <div>
-        <h2>PAYMENT</h2>    
+    <h2>PAYMENT</h2>    
     <div class="col-12 my-4 d-flex justify-content-between">
       <div class="col-4 row">
         <div class="border-right col-12 px-5">
            <div class="input-group">
              <div class="input-group-prepend">
-               <span class="input-group-text" >Plat Id</span>
+               <span class="input-group-text" >License Plate</span>
              </div>
-               <input type="text" v-model="licensePlate" class="form-control">
+               <input type="text" v-model="licensePlate" class="form-control ">
             </div>
               <Button  @click.prevent="findPayment" class="btn btn-info float-right my-2 btnnya">
                    searching
@@ -88,7 +88,7 @@ methods: {
     .then(({data})=>{
       // this.payments=isi
       // alert(this.payments)
-      this.payments = data
+      this.payments = data.reverse()
 
     })
     .catch((err)=>{
