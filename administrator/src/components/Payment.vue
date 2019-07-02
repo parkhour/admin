@@ -75,28 +75,28 @@ created(){
 },
 methods: {
   findPayment(){    
-  //  axios
-  //  .post("/payments",{
-  //    "licensePlate":this.licensePlate
-  //  },{
-  //    headers: {
-  //      authorization:localStorage.access_token
+   axios
+   .post("/payments",{
+     "licensePlate":this.licensePlate
+   },{
+     headers: {
+       authorization:localStorage.access_token
       
-  //    }
-  //  })
-  //   .then(({data})=>{
-  //     // this.payments=isi
-  //     // alert(this.payments)
-  //     this.payments = data.reverse()
+     }
+   })
+    .then(({data})=>{
+      // this.payments=isi
+      // alert(this.payments)
+      this.payments = data
 
-  //   })
-  //   .catch((err)=>{
-  //     console.log(err)
-  //   })
-  //   .finally(()=>{
-  //     this.licensePlate = ''
-  //   })
-  console.log(this.licensePlate)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+    .finally(()=>{
+      this.licensePlate = ''
+    })
+  // console.log(this.licensePlate)
   },
   confirm(value){
     // console.log(value);
