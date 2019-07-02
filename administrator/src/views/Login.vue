@@ -37,7 +37,7 @@ export default {
   },
   created(){
      if (localStorage.access_token) {
-      this.$router.push("/payment");
+      this.$router.push("/payments");
     }
 
   },

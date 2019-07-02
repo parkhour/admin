@@ -5,11 +5,11 @@
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-    <b-collapse id="nav-collapse" is-nav>
+    <b-collapse id="nav-collapse" is-nav class="cl">
       <b-navbar-nav>
-        <b-nav-item href="#">Payment</b-nav-item>
-        <b-nav-item href="#">History</b-nav-item>
-        <b-nav-item href="#">User</b-nav-item>
+        <b-nav-item to="/payment">Payment</b-nav-item>
+        <b-nav-item to="/history">History</b-nav-item>
+        <b-nav-item to="/reservation">Reservation</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
@@ -17,7 +17,7 @@
         <b-nav-item-dropdown right>
           <!-- Using 'button-content' slot -->
           <template slot="button-content"><em>User</em></template>
-          <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+          <b-dropdown-item @click="logout">Sign Out</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>
@@ -25,10 +25,20 @@
 </div>
 
 </template>
+<script>
+export default {
+  methods:{
+    logout(){
+      localStorage.clear()
+      this.router.push('/login')
+    }
+  }
+}
+</script>
 
 <style scoped>
 .navigasi{
-    background-color:rgb(255,207,0) !important;
+    background-color:black !important;
 }
     
 </style>
