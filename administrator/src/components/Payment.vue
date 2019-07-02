@@ -13,7 +13,7 @@
               <Button  @click.prevent="findPayment" class="btn btn-info float-right my-2 btnnya">
                    searching
               </Button>
-        </div>
+           </div>
       </div>
        <div class="col-7">
          <div v-if="this.payments==''">
