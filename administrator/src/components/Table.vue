@@ -32,7 +32,7 @@
         if (!item) {
           return
 
-        } else if (item.status === 'completed') {
+        } else if (item.status === 'paid') {
           return 'table-success' 
         } 
         else if (item.status === 'waiting')

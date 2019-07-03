@@ -16,7 +16,7 @@
            </div>
       </div>
        <div class="col-7">
-         <div v-if="this.payments==''">
+         <div v-if="!this.payments==''">
              <img src="../assets/none.png" alt="" height="300px">
          </div>
           <div v-else >
@@ -31,11 +31,11 @@
               </div>
               <div class="d-flex justify-content-between bawah pb-1 pt-3">
                  <div>Parking Start</div>
-                 <div>{{payments.parkingStart}}</div>
+                 <div>{{moment(payments.parkingStart).format('llll')}}</div>
               </div>
                <div class="d-flex justify-content-between bawah pb-1 pt-3">
                  <div>Parking End</div>
-                 <div> {{payments.parkingEnd}}</div>
+                 <div> {{moment(payments.parkingEnd).format('llll')}}</div>
               </div>
                <div class="d-flex justify-content-between bawahh pb-1 pt-3 ">
                  <div>Total</div>
@@ -74,6 +74,9 @@ created(){
    
 },
 methods: {
+  moment: function(date) {
+      return moment(date)
+    },
   findPayment(){    
    axios
    .post("/payments",{
@@ -98,11 +101,15 @@ methods: {
     })
   // console.log(this.licensePlate)
   },
+  clear(){
+    this.licensePlate="",
+    this.payments=''
+  },
   confirm(value){
     // console.log(value);
      axios
       .patch("/payments/"+value,{
-          status:"completed"
+          status:"paid"
         },{
           headers: {
             authorization:localStorage.access_token
@@ -120,7 +127,7 @@ methods: {
           })
         
         }
-},
+        },
 // computed: {
 //   capitalizedLicensePlate: () => {
 //     return this.licensePlate.toUpperCase();
@@ -136,12 +143,14 @@ watch: {
 }
 </script>
 <style scoped>
+
 .listpayments{
   border-bottom: 1px solid;
 }
 .inputannya{
   height:13vh;
   font-size:6vh
+  
 }
 .bawah{
   font-size:3vh;
@@ -154,5 +163,7 @@ watch: {
   border-bottom: 1px solid; 
   outline: 0;
 }
+
+
   
 </style>
