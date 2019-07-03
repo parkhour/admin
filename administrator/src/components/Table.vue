@@ -22,7 +22,7 @@
     props:["datanya","fieldnya"],
     data() {
       return {
-        perPage: 5,
+        perPage: 10,
         currentPage: 1,
         // Note `isActive` is left out and will not appear in the rendered table
       }

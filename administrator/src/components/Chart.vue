@@ -1,16 +1,15 @@
 <template>
   <div class="col-">
-  <select  name="LeaveType" @change="onChange($event)" class="form-control" v-model="key">
-   <option value="satu">Minggu 1</option>
-   <option value="dua">Minggu 2</option>
-    <option value="tiga">Minggu 3</option>
-     <option value="empat">Minggu 4</option>
+  <select @change="onChange($event)" class="form-control col-6 ml-3 my-2 bordered-0" v-model="key">
+   <option value="semua">All Weeks </option>
+   <option value="satu">Week 1 (20/6/2019-27/6/2019)</option>
+   <option value="dua">Week 2 (28/06/2019-05/07/2019)</option>
 </select>
-    <div class="col-8">
+    <div class="col-12">
       <line-chart
       :width="800"
       :height="300"
-      :labels="['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu']"
+      :labels="['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']"
       :datasets="displayedDatasets"
       :options="$options.options"
     ></line-chart>
@@ -36,30 +35,20 @@ export default {
           datasets : {
           satu: {
             label: 'Minggu 1',
-            borderColor: '#3e95cd',
+            borderColor: 'rgba(50, 115, 220, 0.5)',
+            backgroundColor: 'rgba(50, 115, 220, 0.5)',
             fill: false,   
-            data: [600, 550, 750,600, 550, 750,130]
+            data: [1322000, 1200000, 750000,1206000, 1554000, 1759000,1300011]
           },
           dua: {
-            label: 'Minggu 2',
-            borderColor: '#8e5ea2',
+            label: 'Week 2',
+           borderColor: 'rgba(255, 56, 96, 0.5)',
+           backgroundColor: 'rgba(255, 56, 96, 0.5)',
             fill: false,   
-            data: [900, 550, 750,600, 550, 750,130]
+            data: [1220000, 1430000, 1750000,1160000,1554000, 1159000,1300011]
           },
-          tiga: {
-            label: 'Minggu 3',
-            borderColor: '#3cba9f',
-            fill: false,   
-            data: [800,450,850,600, 550, 750,130]
           },
-          empat: {
-            label: 'Minggu 4',
-            borderColor: '#e8c3b9',
-            fill: false,
-            data: [600, 450, 750,100, 850, 750,130]
-          }
-          },
-          selectedYears: ["dua"],
+          selectedYears: ["dua","satu"],
           key: ""
         }
       },
@@ -75,7 +64,12 @@ export default {
       methods: {
             onChange(event) {
 
-                this.selectedYears=[event.target.value]
+               if(event.target.value!=="semua"){
+                  this.selectedYears=[event.target.value]
+               }else{
+                  this.selectedYears = ["satu","dua"]
+
+               }
             },        
         },
            

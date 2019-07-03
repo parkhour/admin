@@ -8,12 +8,13 @@
         <b-nav-item to="/payment">Payment</b-nav-item>
         <b-nav-item to="/history">History</b-nav-item>
         <b-nav-item to="/reservation">Reservation</b-nav-item>
+         <b-nav-item to="/chart">Statistics</b-nav-item>
       </b-navbar-nav>
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
         <b-nav-item-dropdown right>
           <!-- Using 'button-content' slot -->
-          <template slot="button-content"><em>hello,Admin</em></template>
+          <template slot="button-content"><em>hello,AdminRifky</em></template>
           <b-dropdown-item @click="logout">Sign Out</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
