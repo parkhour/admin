@@ -31,6 +31,7 @@
 <script>
 import axios from '@/api/axios'
 import Table from "@/components/Table.vue"
+import data from '@/assets/mockData.json'
 export default {
     name:"payment",
     components:{
@@ -40,11 +41,10 @@ export default {
 data(){
   return{
     paymentsHistory:[],
-    field:['no','licensePlate','mallName', 'uid','status','totalCharge'],
+    field:['no','licencePlate','entrance','status','Number','totalCharge'],
     searchValue:'',
     paymentsHistorySearch:[],
     loading:true
-
   }
 },
 created() {
@@ -52,29 +52,16 @@ created() {
 },
 methods: {
   getPayments(){
-      axios
-      .get("/reservations/admin",{
-        headers: {
-          authorization:localStorage.access_token
-        }
-      })
-        .then(({data})=>{
-          console.log(data)
           data.map((datum)=>{
               if(!datum.totalCharge){
-                  datum.totalCharge= '-'
+                  datum.totalCharge= '-'                 
               }           
-              datum.parkingEnd = moment(datum.parkingEnd).format('llll')
+               datum.entrance = moment(new Date(datum.entrance)).format('llll')
           })
-          this.paymentsHistory=data.reverse()  
+          console.log('kesini')
+          this.paymentsHistory=data 
           this.paymentsHistorySearch=this.paymentsHistory
-        })
-        .catch((err)=>{
-          console.log(err)
-        })
-        .finally((err)=>{
-          this.loading = false
-        })
+          this.loading=false
   },
   search(){
      if(this.searchValue==""){
@@ -83,7 +70,7 @@ methods: {
         let regex = new RegExp(this.searchValue, 'i')
         let result = this.paymentsHistory.filter(el => {
             return (
-                el.licensePlate.match(regex)
+                el.licencePlate.match(regex)
             )
         })
         this.paymentsHistory = result

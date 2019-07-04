@@ -1,6 +1,8 @@
 <template>
   <div class="col-">
+     <h2 class="mb-4">Revenue Statisctics</h2> 
   <select @change="onChange($event)" class="form-control col-6 ml-3 my-2 bordered-0" v-model="key">
+    <option selected>Open this select menu</option>
    <option value="semua">All Weeks </option>
    <option value="satu">Week 1 (20/6/2019-27/6/2019)</option>
    <option value="dua">Week 2 (28/06/2019-05/07/2019)</option>
@@ -34,7 +36,7 @@ export default {
         return {
           datasets : {
           satu: {
-            label: 'Minggu 1',
+            label: 'Week 1',
             borderColor: 'rgba(50, 115, 220, 0.5)',
             backgroundColor: 'rgba(50, 115, 220, 0.5)',
             fill: false,   
@@ -45,7 +47,7 @@ export default {
            borderColor: 'rgba(255, 56, 96, 0.5)',
            backgroundColor: 'rgba(255, 56, 96, 0.5)',
             fill: false,   
-            data: [1220000, 1430000, 1750000,1160000,1554000, 1159000,1300011]
+            data: [1220000, 1430000, 1750000,1160000,1554000, ,]
           },
           },
           selectedYears: ["dua","satu"],

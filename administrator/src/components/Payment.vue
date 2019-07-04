@@ -16,7 +16,7 @@
            </div>
       </div>
        <div class="col-7">
-         <div v-if="!this.payments==''">
+         <div v-if="this.payments==''">
              <img src="../assets/none.png" alt="" height="300px">
          </div>
           <div v-else >

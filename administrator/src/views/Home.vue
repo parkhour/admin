@@ -10,20 +10,20 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
 import Navbar from "@/components/Navbar.vue"
-import Payment from "@/components/Payment.vue"
+
 
 export default {
   name: "home",
   components: {
-    HelloWorld,
     Navbar,
-    Payment
   },
   created(){
      if (!localStorage.access_token) {
       this.$router.push("/login");
+    }else{
+      this.$router.push("/payment")
+      
     }
   }
 }
@@ -32,6 +32,7 @@ export default {
 .home{
   background-color: #F8F9FA;
   height:100vh;
+  padding-bottom:1000px;
   
 
 }
